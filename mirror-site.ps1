@@ -137,6 +137,7 @@ function Optimize-StaticHtml([string]$html) {
   $html = $html -replace '<script>\(\(\)=>\{class RocketLazyLoadScripts[\s\S]*?RocketLazyLoadScripts\.run\(\)\}\)\(\);</script>', ''
   $html = $html -replace '<script type="rocketlazyloadscript"', '<script type="text/javascript"'
   $html = $html -replace ' data-rocket-type="text/javascript"', ''
+  $html = $html -replace " data-rocket-type='text/javascript'", ''
   $html = $html -replace ' data-rocket-defer', ''
   $html = $html -replace ' data-rocket-src="([^"]+)"', ' src="$1"'
   $html = $html -replace '\s*data-animationType="[^"]*"', ''

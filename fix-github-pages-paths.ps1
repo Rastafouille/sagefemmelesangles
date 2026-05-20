@@ -39,7 +39,8 @@ $patterns = @(
   @{ Regex = '&quot;/(?!/)(?!' + $escapedRepo + '/)'; Replace = '&quot;' + $prefix + '/' }
 )
 
-$extensions = @("*.html", "*.css", "*.js")
+# Ne pas toucher aux .js : le remplacement de "/..." casse les librairies minifiées (ex. owl.carousel).
+$extensions = @("*.html", "*.css")
 $files = Get-ChildItem -Path $target -Recurse -File -Include $extensions -ErrorAction SilentlyContinue
 $changed = 0
 
